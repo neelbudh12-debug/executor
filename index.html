@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Executor 🔪</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    ol {
+      text-align: left;
+      display: inline-block;
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
+    button {
+      font-size: 2em;
+      padding: 20px 60px;
+      border: none;
+      border-radius: 12px;
+      background: red;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+  <h1>The Executor 🔪</h1>
+  <ol>
+    <li>Turn off WiFi</li>
+    <li>Type in URL that you want to be unblocked on new Chrome tab (works on Chrome only)</li>
+    <li>Come back to this page</li>
+    <li> click the button</li>
+<li>paste in adress bar</li>
+<li> if doesnt work manually type</li>
+<li> turn on wifi and quickly press go in the search bar</li>
+<li> now when you come back to the new chrome tab and it should work</li>
+  </ol>
+
+  <button onclick="execute()">EXECUTE</button>
+
+  <script>
+    function isChromebook() {
+      return navigator.userAgent.includes("CrOS");
+    }
+
+    function execute() {
+      if (!isChromebook()) {
+        alert("⚠️ This will not work for you. The Executor is Chromebook-only.");
+        return;
+      }
+
+      const command = "chrome://restart";
+      navigator.clipboard.writeText(command).then(() => {
+        alert("✅ Command copied to clipboard!\nPaste it into Chrome's address bar and press Enter.");
+      }).catch(err => {
+        alert("⚠️ Failed to copy. Please manually type: chrome://restart");
+      });
+    }
+  </script>
+</body>
+</html>
